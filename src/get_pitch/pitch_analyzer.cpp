@@ -12,10 +12,13 @@ namespace upc {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
-      for (unsigned int n = 0; n < x.size() -1 -l; ++n) {
-        r[1] =x[n]*x[n+1] + r[1];
+      /// \DONE Implementado el calculo de la autocorrelación
+      
+      r[l]=0;
+      for (unsigned int n = 0; n < (x.size()-l); ++n) {
+        r[l] =x[n]*x[n+l] + r[l];
       }
-      r[1] = (1.0F/x.size())*r[1];
+      r[l] /= x.size();
     }
 
     if (r[0] == 0.0F) //to avoid log() and divide zero 
@@ -29,18 +32,19 @@ namespace upc {
     window.resize(frameLen);
 
     switch (win_type) {
-    case HAMMING:
-      /// \TODO Implement the Hamming window
-      float a0 = 0.54F;
-      float a1 = 0.46F;
+      case HAMMING:
+        /// \TODO Implement the Hamming window
+        /// \DONE Implementada la ventana de Hamming
         for (unsigned int i = 0; i<frameLen; i++){
-          window[i] = a0-a1*cos((2*M_PI)/(frameLen-1));
+            window[i] = 0.53836 - 0.46164*cos((2*M_PI*i)/(frameLen-1)); //float a0=0.53836; float a1=0.46164;
         }
 
       break;
-    case RECT:
-    default:
-      window.assign(frameLen, 1);
+
+      case RECT:
+
+      default:
+        window.assign(frameLen, 1);
     }
   }
 
@@ -61,7 +65,7 @@ namespace upc {
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
     
-    if ( (rmaxnorm > 0.5F || r1norm > 0.92F) && pot > -48.0F)
+    if ( (rmaxnorm > umaxnorm || r1norm > 0.95F) && pot > -48.0F) //umaxnorm 0.51;
       return false;
     else
       return true;
@@ -89,18 +93,30 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
-    while(*iR>0){
+    /*while(*iR>0){
       ++iR;
     }
     if(iR<r.begin() + npitch_min)
       iR = iR + npitch_min;
     iRMax = iR;
+    */
+   /*
     while (iR != r.end()){
       if (*iR>*iRMax) {
         iRMax = iR;
       }
-      ++iR;
+      iR++;
     }
+    */
+    
+   for (iR = iRMax = (r.begin() + npitch_min); iR < (r.begin() + npitch_max); iR++) {
+    
+    if (*iR>*iRMax) {
+        iRMax = iR;
+    }
+
+   }
+   
 
     unsigned int lag = iRMax - r.begin();
 

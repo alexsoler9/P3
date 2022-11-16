@@ -66,9 +66,9 @@ namespace upc {
     ///   or compute and use other ones.
     
     if ( (rmaxnorm > umaxnorm || r1norm > 0.95F) && pot > -48.0F) //umaxnorm 0.51;
-      return false;
+      return false; // Si se cumple, estamos fuera del umbral, por tanto, es voz o sonido sonoro.
     else
-      return true;
+      return true; // Si se cumple, quiere decir que es silencio o sonido sordo.
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {

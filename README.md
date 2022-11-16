@@ -45,6 +45,8 @@ Ejercicios básicos
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.
 	 
+	 Código de Matlab
+	 
 	 ```c
 	[y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
 	delta_t = 1/Fs;

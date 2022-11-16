@@ -35,7 +35,7 @@ Ejercicios básicos
    ```
    
    **`
-   El cálculo de la autocorrelación es la correlacion de la señal consigo misma y desplazada. Realizamos la convolución, haciendo el producto para cada muestra y 	finalmente dividimos el resultado por el número total de muestras de la señal.
+   El cálculo de la autocorrelación es la correlacion de la señal consigo misma y desplazada. Realizamos la convolución, haciendo el producto para cada muestra y finalmente dividimos el resultado por el número total de muestras de la señal.
    `**
 
    * Inserte una gŕafica donde, en un *subplot*, se vea con claridad la señal temporal de un segmento de
@@ -48,26 +48,26 @@ Ejercicios básicos
 	 Código de Matlab
 	 
 	 ```c
-	[y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
-	delta_t = 1/Fs;
-	t=0:delta_t:((length(y)-1)*delta_t);
-	subplot(2,1,1)
-	plot(t,y);
-	xlabel("Segundos");
-	ylabel("Amplitud");
-	title("Señal de 30 ms");
-	subplot(2,1,2)
-	a=xcorr(y);
-	plot(a);
-	xlabel("Muestras");
-	ylabel("Amplitud");
-	title("Autocorrelación");
+	 [y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
+	 delta_t = 1/Fs;
+	 t=0:delta_t:((length(y)-1)*delta_t);
+	 subplot(2,1,1)
+	 plot(t,y);
+	 xlabel("Segundos");
+	 ylabel("Amplitud");
+	 title("Señal de 30 ms");
+	 subplot(2,1,2)
+	 a=xcorr(y);
+	 plot(a);
+	 xlabel("Muestras");
+	 ylabel("Amplitud");
+	 title("Autocorrelación");
 	 ```
 	 
-	**`
+	
 	En esta función, se lee una señal de aproximadamente 30 ms de un fonema sonoro, en este caso la a, finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
 	A continuación se muestra las gráficas:
-	`**
+	
 	<img src="img/matlab.png" width="640" align="center">
 	
 	<imag src="img/periodos_señal.png" width="640" align="center">
@@ -75,7 +75,6 @@ Ejercicios básicos
 	**`
 	Como se puede observar en el dominio temporal, hay una periodicidad de 
 	8,125ms, por lo que el pitch es aproximadamente 123,07Hz.
-	
 	Mientras que en la autocorrelación, observamos un periodo de 130 muestras, que corresponde  a un pitch de 123,07Hz, observamos por lo tanto, como coincide.
 	`**
 	 

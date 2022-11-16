@@ -84,10 +84,16 @@ Ejercicios básicos
      autocorrelación. Inserte a continuación el código correspondiente.
 	<img src="img/mejor candidato.png" width="640" align="center">
 	
+	
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
 
+	Primero implementamos una función básica (desarrollada en clase) para detectar si era sordo o sonoro a partir de la comprobación de un umbral fijo utilizando un simple if().
+	
+	Esto es bastante mejorable para tener una mejor detección, y hemos implementado esta segunda versión a partir de la comprobación de la potencia y las autocorrelación normalizadas (parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.51*
+	
 	<img src="img/regla de decisión.png" width="640" align="center">
-
+	
+	
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del estimador de pitch. El 

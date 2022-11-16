@@ -77,13 +77,12 @@ Ejercicios básicos
 	8,125ms, por lo que el pitch es aproximadamente 123,07Hz.
 	Mientras que en la autocorrelación, observamos un periodo de 130 muestras, que corresponde  a un pitch de 123,07Hz, observamos por lo tanto, como coincide.
 	`**
-	 
-
+	``` 
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
 	<img src="img/mejor candidato.png" width="640" align="center">
-	
+	```	
 	
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
 
@@ -93,6 +92,7 @@ Ejercicios básicos
 	
 	<img src="img/regla de decisión.png" width="640" align="center">
 	
+	```
 	
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 

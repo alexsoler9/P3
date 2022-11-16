@@ -70,7 +70,7 @@ Ejercicios básicos
 	
 	<img src="img/matlab.png" width="640" align="center">
 	
-	<imag src="img/periodos_señal.png" width="640" align="center">
+	<img src="img/periodos_señal.png" width="640" align="center">
 	
 	**`
 	Como se puede observar en el dominio temporal, hay una periodicidad de 

@@ -82,8 +82,11 @@ Ejercicios básicos
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
-
+	<img src="img/mejor candidato.png" width="640" align="center">
+	
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+
+	<img src="img/regla de decisión.png" width="640" align="center">
 
    * Puede serle útil seguir las instrucciones contenidas en el documento adjunto `código.pdf`.
 

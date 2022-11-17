@@ -15,24 +15,24 @@ Ejercicios básicos
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
    
-   ```c
-    void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
+   	```c
+    	void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
 
-    for (unsigned int l = 0; l < r.size(); ++l) {
-  	/// \TODO Compute the autocorrelation r[l]
-      	/// \DONE Implementado el calculo de la autocorrelación
+    	for (unsigned int l = 0; l < r.size(); ++l) {
+  		/// \TODO Compute the autocorrelation r[l]
+      		/// \DONE Implementado el calculo de la autocorrelación
       
-      r[l]=0;
-      for (unsigned int n = 0; n < (x.size()-l); ++n) {
-        r[l] =x[n]*x[n+l] + r[l];
-      }
-      r[l] /= x.size();
-    }
+      	r[l]=0;
+      	for (unsigned int n = 0; n < (x.size()-l); ++n) {
+        	r[l] =x[n]*x[n+l] + r[l];
+      	}
+      	r[l] /= x.size();
+    	}
 
-    if (r[0] == 0.0F) //to avoid log() and divide zero 
-      r[0] = 1e-10; 
-  }
-   ```
+    	if (r[0] == 0.0F) //to avoid log() and divide zero 
+      		r[0] = 1e-10; 
+  	}
+   	```
    
    **`
    El cálculo de la autocorrelación es la correlacion de la señal consigo misma y desplazada. Realizamos la convolución, haciendo el producto para cada muestra y finalmente dividimos el resultado por el número total de muestras de la señal.
@@ -45,32 +45,33 @@ Ejercicios básicos
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.
 	 
-	 Código de Matlab
+	 	Código de Matlab
 	 
-	 ```c
-	 [y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
-	 delta_t = 1/Fs;
-	 t=0:delta_t:((length(y)-1)*delta_t);
-	 subplot(2,1,1)
-	 plot(t,y);
-	 xlabel("Segundos");
-	 ylabel("Amplitud");
-	 title("Señal de 30 ms");
-	 subplot(2,1,2)
-	 a=xcorr(y);
-	 plot(a);
-	 xlabel("Muestras");
-	 ylabel("Amplitud");
-	 title("Autocorrelación");
-	 ```
+		 ```c
+	 	[y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
+	 	delta_t = 1/Fs;
+	 	t=0:delta_t:((length(y)-1)*delta_t);
+	 	subplot(2,1,1)
+	 	plot(t,y);
+	 	xlabel("Segundos");
+		ylabel("Amplitud");
+	 	title("Señal de 30 ms");
+	 	subplot(2,1,2)
+	 	a=xcorr(y);
+	 	plot(a);
+	 	xlabel("Muestras");
+	 	ylabel("Amplitud");
+	 	title("Autocorrelación");
+	 	```
 	 
 	
-	En esta función, se lee una señal de aproximadamente 30 ms de un fonema sonoro, en este caso la a, finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
-	A continuación se muestra las gráficas:
+		En esta función, se lee una señal de aproximadamente 30 ms de un fonema sonoro, en este caso la a, 
+		finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
+		A continuación se muestra las gráficas:
 	
-	<img src="img/matlab.png" width="640" align="center">
+		<img src="img/matlab.png" width="640" align="center">
 	
-	<img src="img/periodos_señal.png" width="640" align="center">
+		<img src="img/periodos_señal.png" width="640" align="center">
 	
 	**`
 	Como se puede observar en el dominio temporal, hay una periodicidad de 
@@ -82,16 +83,19 @@ Ejercicios básicos
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
      
-	<img src="img/mejor candidato.png" width="640" align="center">
+		<img src="img/mejor candidato.png" width="640" align="center">
 		
 	
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
 
-	Primero implementamos una función básica (desarrollada en clase) para detectar si era sordo o sonoro a partir de la comprobación de un umbral fijo utilizando un simple if().
+		Primero implementamos una función básica (desarrollada en clase) para detectar si era sordo 
+		o sonoro a partir de la comprobación de un umbral fijo utilizando un simple if().
 	
-	Esto es bastante mejorable para tener una mejor detección, y hemos implementado esta segunda versión a partir de la comprobación de la potencia y las autocorrelación normalizadas (parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.51*
+		Esto es bastante mejorable para tener una mejor detección, y hemos implementado esta segunda 
+		versión a partir de la comprobación de la potencia y las autocorrelación normalizadas
+		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.51*
 	
-	<img src="img/regla de decisión.png" width="640" align="center">
+		<img src="img/regla de decisión.png" width="640" align="center">
 	
 	
 	

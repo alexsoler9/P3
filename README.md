@@ -114,8 +114,10 @@ Ejercicios básicos
 
 		Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
 
-	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
+	    	Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+		
+		//
 		
 		Para obtener los datos de autocorrealciones normalizadas y máximas (r1norm y rmaxnorm), 
 		utilizamos la señal de train rl010.wav de donde extraemos los datos para la autocorrelación un fichero .out

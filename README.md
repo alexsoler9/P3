@@ -69,9 +69,9 @@ Ejercicios básicos
 		finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
 		A continuación se muestra las gráficas:
 	
-		<img src="img/matlab.png" width="640" align="center">
+			<img src="img/matlab.png" width="640" align="center">
 	
-		<img src="img/periodos_señal.png" width="640" align="center">
+			<img src="img/periodos_señal.png" width="640" align="center">
 	
 	**`
 	Como se puede observar en el dominio temporal, hay una periodicidad de 
@@ -83,7 +83,7 @@ Ejercicios básicos
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
      
-		<img src="img/mejor candidato.png" width="640" align="center">
+			<img src="img/mejor candidato.png" width="640" align="center">
 		
 	
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
@@ -95,7 +95,7 @@ Ejercicios básicos
 		versión a partir de la comprobación de la potencia y las autocorrelación normalizadas
 		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.51*
 	
-		<img src="img/regla de decisión.png" width="640" align="center">
+			<img src="img/regla de decisión.png" width="640" align="center">
 	
 	
 	

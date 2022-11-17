@@ -112,6 +112,15 @@ Ejercicios básicos
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+		
+		Para obtener los datos de autocorrealciones normalizadas y máximas (r1norm y rmaxnorm), 
+		utilizamos la señal de train rl010.wav de donde extraemos los datos para la autocorrelación un fichero .out
+		que nos permitirá poder separar en los dos tipos de autocorrelaciones deseadas.
+		Utilizamos el comando cut para extraer los datos y hacer dos ficheros separados que introduciremos
+		posteriormente en el wavesurfer:
+		
+		<img src="img/creacion archivos pot.png" width="640" align="center">
+		
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica

@@ -45,33 +45,33 @@ Ejercicios básicos
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la biblioteca matplotlib de Python.
 	 
-	 	Código de Matlab
+	 Código de Matlab
 	 
-		 ```c
-	 	[y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
-	 	delta_t = 1/Fs;
-	 	t=0:delta_t:((length(y)-1)*delta_t);
-	 	subplot(2,1,1)
-	 	plot(t,y);
-	 	xlabel("Segundos");
-		ylabel("Amplitud");
-	 	title("Señal de 30 ms");
-	 	subplot(2,1,2)
-	 	a=xcorr(y);
-	 	plot(a);
-	 	xlabel("Muestras");
-	 	ylabel("Amplitud");
-	 	title("Autocorrelación");
-	 	```
+	```c
+	[y, Fs] = audioread("fonema_sonoro_a_30ms.wav");
+	delta_t = 1/Fs;
+	t=0:delta_t:((length(y)-1)*delta_t);
+	subplot(2,1,1)
+	 plot(t,y);
+	 xlabel("Segundos");
+	 ylabel("Amplitud");
+	 title("Señal de 30 ms");
+	 subplot(2,1,2)
+	 a=xcorr(y);
+	 plot(a);
+	 xlabel("Muestras");
+	 ylabel("Amplitud");
+	 title("Autocorrelación");
+	 ```
 	 
 	
-		En esta función, se lee una señal de aproximadamente 30 ms de un fonema sonoro, en este caso la a, 
-		finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
-		A continuación se muestra las gráficas:
+	En esta función, se lee una señal de aproximadamente 30 ms de un fonema sonoro, en este caso la a, 
+	finalmente se hace un plot de la señal temporal, así como de su autocorrelación.
+	A continuación se muestra las gráficas:
 	
-		<img src="img/matlab.png" width="640" align="center">
+	<img src="img/matlab.png" width="640" align="center">
 	
-		<img src="img/periodos_señal.png" width="640" align="center">
+	<img src="img/periodos_señal.png" width="640" align="center">
 	
 	**`
 	Como se puede observar en el dominio temporal, hay una periodicidad de 

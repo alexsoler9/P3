@@ -114,7 +114,7 @@ Ejercicios básicos
 
 		Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
 
-	    	Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
+	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
 		
 		//

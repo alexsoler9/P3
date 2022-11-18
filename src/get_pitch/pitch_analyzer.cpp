@@ -65,7 +65,7 @@ namespace upc {
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
     
-    if ( (rmaxnorm > umaxnorm || r1norm > 0.95F) && pot > -48.0F) //umaxnorm 0.51;
+    if ( (rmaxnorm > umaxnorm || r1norm > u1norm) && pot > -48.0F) //umaxnorm 0.51, u1norm 0.95;
       return false; // Si se cumple, estamos fuera del umbral, por tanto, es voz o sonido sonoro.
     else
       return true; // Si se cumple, quiere decir que es silencio o sonido sordo.

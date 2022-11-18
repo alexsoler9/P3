@@ -27,7 +27,8 @@ Usage:
 Options:
     -h, --help  Show this screen
     --version   Show the version of the project
-    -m REAL, --umaxnorm=REAL  Umbral del máximo de la autocorrelación [default: 0.5]
+    -m REAL, --umaxnorm=REAL  Umbral del máximo de la autocorrelación [default: 0.44]
+    -u REAL, --u1norm=REAL  Umbral de la autocorrelación en 1 [default: 0.95]
 
 Arguments:
     input-wav   Wave file with the audio signal
@@ -48,6 +49,7 @@ int main(int argc, const char *argv[]) {
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
   float umaxnorm = std::stof(args["--umaxnorm"].asString()); //importante
+  float u1norm = std::stof(args["--u1norm"].asString());
 
   // Read input sound file
   unsigned int rate;
@@ -61,12 +63,18 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, umaxnorm);
+  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::HAMMING, 50, 500, umaxnorm, u1norm);
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
-  
+
+  //CLIPPING_THRESHOLD = 0.007
+  for (unsigned int n = 0; n < x.size(); n++){
+    if(x[n] < 0.07 && x[n] > 0.07)
+      x[n] = 0;
+
+ }  
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
   vector<float> f0;

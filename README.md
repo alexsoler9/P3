@@ -93,7 +93,7 @@ Ejercicios básicos
 	
 		Esto es bastante mejorable para tener una mejor detección, y hemos implementado esta segunda 
 		versión a partir de la comprobación de la potencia y las autocorrelación normalizadas
-		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.43*
+		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.44*
 	
 		<img src="img/regla de decisión.png" width="640" align="center">
 	
@@ -121,7 +121,7 @@ Ejercicios básicos
 		
 		**`
 		Para obtener los datos de autocorrealciones normalizadas y máximas (r1norm y rmaxnorm), 
-		utilizamos la señal de train rl010.wav de donde extraemos los datos en un archivo txt, en la imagen del wavesurfer se pueden observar rmaxnorm = r[lag]/r[0], r1norm = r[1]/r[0], Potencia i finalmente la senyal (roden de arriba a abajo).
+		utilizamos la señal de train rl010.wav de donde extraemos los datos en un archivo txt, en la imagen del wavesurfer se pueden observar rmaxnorm = r[lag]/r[0], r1norm = r[1]/r[0], Potencia y finalmente la senyal (orden de arriba a abajo).
 		`**
 		
 		
@@ -145,6 +145,8 @@ Ejercicios básicos
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
+	
+	<img src="img/Score_1.png" width="640" align="center">
 
 Ejercicios de ampliación
 ------------------------
@@ -167,7 +169,57 @@ Ejercicios de ampliación
   Entre las posibles mejoras, puede escoger una o más de las siguientes:
 
   * Técnicas de preprocesado: filtrado paso bajo, diezmado, *center clipping*, etc.
+  
+  ```c
+  //CLIPPING_THRESHOLD = 0.003
+  #if 1
+    for (unsigned int n = 0; n < x.size(); n++){
+      if(x[n] < 0.003 && x[n] > -0.003)
+        x[n] = 0;
+    }
+  #endif
+  ```
+  <img src="img/Score_center.png" width="640" align="center">
+  
+  **`
+  Como se puede observar con éste método hemos conseguido mejorar nuestro detector de pitch, obteniendo ahora una Score de 90,74%
+  `**
+
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
+  
+  Implementación del filtro de mediana
+  
+    ```c
+//median filter 3 samples
+  #if 1
+    for( unsigned int i = 1; i < f0.size(); i++){
+      vector<float> vec {f0[i-1], f0[i], f0[i+1]};
+      sort(vec.begin(), vec.end());
+      f0[i] = vec[1];
+    }
+  #endif
+  ```
+  Con el postprocesado de la señal usando el filtro de mediana de 3 muestras, mejoramos por un lado la tasa de acierto evitando los errores que a veces ocurrían en la estimación del pitch, en la imagen inferior se puede observar el resultado previo el cual tenia unos picos puntuales y el resultado después del postprocesado.
+  
+  <img src="img/rl010_pitch_median.png" width="640" align="center">
+  <img src="img/Score_median.png" width="640" align="center">
+  
+  Se ha probado también a realizar un filtro de mediana más grande, de un total de 5 muestras por tal que sea simétrico.
+  ```c
+//median filter 5 samples
+  #if 0
+    for( unsigned int i = 2; i < f0.size(); i++){
+      vector<float> vec {f0[i-2],f0[i-1], f0[i], f0[i+1], f0[i+2]};
+      sort(vec.begin(), vec.end());
+      f0[i] = vec[2];
+    }
+  #endif
+  ```
+  **`
+  Sin embargo con un filtro de mediana de longitud 5, los resultados empeoran, como se puede observar en la Score inferior, por lo tanto aplicaremos el filtro de mediana de 3 muestras.
+  `**
+  <img src="img/median_filter5.png" width="640" align="center">
+  
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
   * Optimización **demostrable** de los parámetros que gobiernan el estimador, en concreto, de los que

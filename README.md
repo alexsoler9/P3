@@ -182,7 +182,7 @@ Ejercicios de ampliación
   <img src="img/Score_center.png" width="640" align="center">
   
   **`
-  Como se puede observar con éste método hemos conseguido mejorar nuestro detector de pitch, obteniendo ahora una Score de 90,74%
+  Como se puede observar con éste método hemos conseguido mejorar nuestro detector de pitch, obteniendo ahora una Score de 90,85%
   `**
 
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.

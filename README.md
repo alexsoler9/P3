@@ -189,8 +189,8 @@ Ejercicios de ampliación
   
   Implementación del filtro de mediana
   
-    ```c
-//median filter 3 samples
+  ```c
+  //median filter 3 samples
   #if 1
     for( unsigned int i = 1; i < f0.size(); i++){
       vector<float> vec {f0[i-1], f0[i], f0[i+1]};
@@ -206,7 +206,7 @@ Ejercicios de ampliación
   
   Se ha probado también a realizar un filtro de mediana más grande, de un total de 5 muestras por tal que sea simétrico.
   ```c
-//median filter 5 samples
+  //median filter 5 samples
   #if 0
     for( unsigned int i = 2; i < f0.size(); i++){
       vector<float> vec {f0[i-2],f0[i-1], f0[i], f0[i+1], f0[i+2]};

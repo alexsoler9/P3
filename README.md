@@ -93,7 +93,7 @@ Ejercicios básicos
 	
 		Esto es bastante mejorable para tener una mejor detección, y hemos implementado esta segunda 
 		versión a partir de la comprobación de la potencia y las autocorrelación normalizadas
-		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.51*
+		(parámetros que recibimos de la cabecera). *Usamos el umbral umaxnorm = 0.43*
 	
 		<img src="img/regla de decisión.png" width="640" align="center">
 	
@@ -117,15 +117,13 @@ Ejercicios básicos
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
 		
-		//
+		<img src="img/wavesurfer_rl010.png" width="640" align="center">
 		
+		**`
 		Para obtener los datos de autocorrealciones normalizadas y máximas (r1norm y rmaxnorm), 
-		utilizamos la señal de train rl010.wav de donde extraemos los datos para la autocorrelación un fichero .out
-		que nos permitirá poder separar en los dos tipos de autocorrelaciones deseadas.
-		Utilizamos el comando cut para extraer los datos y hacer dos ficheros separados que introduciremos
-		posteriormente en el wavesurfer:
+		utilizamos la señal de train rl010.wav de donde extraemos los datos en un archivo txt, en la imagen del wavesurfer se pueden observar rmaxnorm = r[lag]/r[0], r1norm = r[1]/r[0], Potencia i finalmente la senyal (roden de arriba a abajo).
+		`**
 		
-		<img src="img/creacion archivos pot.png" width="640" align="center">
 		
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare

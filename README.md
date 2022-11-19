@@ -132,6 +132,15 @@ Ejercicios básicos
      
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
+		
+		<img src="img/rl010_pitch.png" width="640" align="center">
+		
+		**`
+		En la gràfica podemos observar la detección de pitch por parte del wavesurfer y de nuestro detector sobre la señal rl010, la cual es la senñal que nos da una Score más baja.
+		`**
+		
+		<img src="img/Score_rl010.png" width="640" align="center">
+		
   
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
@@ -149,6 +158,8 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
+    
+    <img src="img/docopt.png" width="640" align="center">
 
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.

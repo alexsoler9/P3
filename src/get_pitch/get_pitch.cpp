@@ -41,6 +41,7 @@ int main(int argc, const char *argv[]) {
 	/// \TODO 
 	///  Modify the program syntax and the call to **docopt()** in order to
 	///  add options and arguments to the program.
+  /// \DONE Añadida la opcion para pasar argumentos, por ejemplo: umaxnorm (umbral del máximo de la autocorrelación), u1norm (umbral para la autocorrelación a lag 1)
     std::map<std::string, docopt::value> args = docopt::docopt(USAGE,
         {argv + 1, argv + argc},	// array of arguments, without the program name
         true,    // show help if requested
@@ -68,13 +69,16 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
+  /// \DONE Implementado center-clipping  sin offset
+  //CLIPPING_THRESHOLD = 0.003
+  #if 1
+    for (unsigned int n = 0; n < x.size(); n++){
+      if(x[n] < 0.003 && x[n] > -0.003)
+        x[n] = 0;
+    }
+  #endif
 
-  //CLIPPING_THRESHOLD = 0.007
-  for (unsigned int n = 0; n < x.size(); n++){
-    if(x[n] < 0.07 && x[n] > 0.07)
-      x[n] = 0;
-
- }  
+  
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
   vector<float> f0;
@@ -86,6 +90,25 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
+  /// \DONE Implementado el el filtro de mediana, se acaba utilizando un filtro de mediana de 3 muestra pues da meor resultado con los datos de entrenamiento.
+
+  //median filter 3 samples
+  #if 1
+    for( unsigned int i = 1; i < f0.size(); i++){
+      vector<float> vec {f0[i-1], f0[i], f0[i+1]};
+      sort(vec.begin(), vec.end());
+      f0[i] = vec[1];
+    }
+  #endif
+
+  //median filter 5 samples
+  #if 0
+    for( unsigned int i = 2; i < f0.size(); i++){
+      vector<float> vec {f0[i-2],f0[i-1], f0[i], f0[i+1], f0[i+2]};
+      sort(vec.begin(), vec.end());
+      f0[i] = vec[2];
+    }
+  #endif
 
   // Write f0 contour into the output file
   ofstream os(output_txt);

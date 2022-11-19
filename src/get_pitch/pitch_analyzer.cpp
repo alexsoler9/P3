@@ -12,7 +12,7 @@ namespace upc {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
   		/// \TODO Compute the autocorrelation r[l]
-      /// \DONE Implementado el calculo de la autocorrelación
+      /// \DONE Implementado el calculo de la autocorrelación siguiendo la siguiente formula: \f$ r[l]=\frac{1}{N}\sum_{n=0}^{N-l}x[n]x[n-l] \f$
       
       r[l]=0;
       for (unsigned int n = 0; n < (x.size()-l); ++n) {
@@ -64,8 +64,9 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    
-    if ( (rmaxnorm > umaxnorm || r1norm > u1norm) && pot > -48.0F) //umaxnorm 0.51, u1norm 0.95;
+    /// \DONE Hecha la regla de decision de unvoiced, la cual tiene en cuenta potencia, \f$ r1norm=\frac{r[1]}{r[0]} \f$ y \f$ rmaxnorm=\frac{r[lag]}{r[0]} \f$ 
+
+    if ( (rmaxnorm > umaxnorm || r1norm > u1norm) && pot > -48.0F) //umaxnorm 0.44, u1norm 0.95, pot 48
       return false; // Si se cumple, estamos fuera del umbral, por tanto, es voz o sonido sonoro.
     else
       return true; // Si se cumple, quiere decir que es silencio o sonido sordo.
@@ -93,21 +94,8 @@ namespace upc {
 	///    - The lag corresponding to the maximum value of the pitch.
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
-    /*while(*iR>0){
-      ++iR;
-    }
-    if(iR<r.begin() + npitch_min)
-      iR = iR + npitch_min;
-    iRMax = iR;
-    */
-   /*
-    while (iR != r.end()){
-      if (*iR>*iRMax) {
-        iRMax = iR;
-      }
-      iR++;
-    }
-    */
+  /// \DONE Implementado el algoritmo del cálculo del lag teniendo en cuenta unos valores mínimos y máximos de pitch
+    
     
    for (iR = iRMax = (r.begin() + npitch_min); iR < (r.begin() + npitch_max); iR++) {
     
@@ -125,7 +113,7 @@ namespace upc {
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
-#if 1
+#if 0
     if (r[0] > 0.0F)
       cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
 #endif

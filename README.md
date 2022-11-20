@@ -121,9 +121,7 @@ Ejercicios básicos
 		
 		**`
 		Para obtener los datos de autocorrealciones normalizadas y máximas (r1norm y rmaxnorm), 
-		utilizamos la señal de train rl010.wav de donde extraemos los datos en un archivo txt, en la imagen del wavesurfer se pueden observar rmaxnorm = r[lag]/r[0], r1norm = r[1]/r[0], Potencia y finalmente la senyal (orden de arriba a abajo).
-		
-		Podemos ver, que en los segmentos donde tenemos sonidos sonoros, la r1norm y la normalizada en el pitch, alcanzan valores cercanos a 1. Esto es debido a que las muestras cercanas en las tramas de voz, son muy parecidas entre ellas, y por eso es alta la autocorrelación.
+		utilizamos la señal de train rl010.wav de donde extraemos los datos en un archivo txt, en la imagen del wavesurfer se pueden observar rmaxnorm = r[lag]/r[0], r1norm = r[1]/r[0], Potencia y finalmente la senyal (orden de arriba a abajo). Podemos ver, que en los segmentos donde tenemos sonidos sonoros, la r1norm y la normalizada en el pitch, alcanzan valores cercanos a 1. Esto es debido a que las muestras cercanas en las tramas de voz, son muy parecidas entre ellas, y por eso es alta la autocorrelación.
 		`**
 		
 		

@@ -146,7 +146,15 @@ Ejercicios básicos
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
 	
+		**`
+		Optimizando los parametros del sistema, obtenemos los siguientes resultados de tablas de error y *score* TOTAL:
+		`**
 	<img src="img/Score_1.png" width="640" align="center">
+	
+		**`
+		Vemos que obtenemos finalmente un 90.71% de *score* TOTAL.
+		`**
+	
 
 Ejercicios de ampliación
 ------------------------
